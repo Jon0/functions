@@ -1,12 +1,13 @@
 #include <iostream>
 
-#include <source/parser.h>
+#include <source/interpreter.h>
+
 
 int main(int argc, char *argv[]) {
 	if (argc > 1) {
 		std::string filename = argv[1];
-		std::cout << "reading file " << filename << "\n";
-		core::read_file(filename);
+		core::interpreter i(filename);
+		i.run();
 	}
 	return 0;
 }
