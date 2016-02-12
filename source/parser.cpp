@@ -196,11 +196,20 @@ program read_file(const std::string &fname) {
 
 tokens lex(const std::string &fname) {
     tokens result;
-    std::stringstream ss;
+
+    // open file and take non-comment lines
     std::ifstream fbuf(fname);
-    ss << fbuf.rdbuf();
+    std::string in = "";
+    std::string line;
+    while (std::getline(fbuf, line)) {
+        if (!line.empty() && line.at(0) != '#') {
+            in += line;
+            in += ' ';
+        }
+    }
+
+    // scan for valid tokens
     std::regex r("\\{|\\}|\\(|\\)|\\*|,|->|:|[_[:alnum:]]+");
-    std::string in = ss.str();
     std::smatch match;
     while (std::regex_search(in, match, r)) {
         for (int i = 0; i < match.size(); ++i) {
