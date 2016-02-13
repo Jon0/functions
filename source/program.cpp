@@ -16,12 +16,26 @@ void stream::print_state() const {
 }
 
 
+void stream::set_state(symbol::ptr_t new_state) {
+    state = new_state;
+}
+
+
 void stream::process(symbol::ptr_t input) {
     auto m = std::make_shared<memory>(state.get(), input.get());
     auto r = function->eval(m.get());
     if (state->type() == r->type()) {
         state = r;
     }
+}
+
+
+symbol::ptr_t stream::output(symbol::ptr_t input) {
+    auto m = std::make_shared<memory>(state.get(), input.get());
+    auto r = function->eval(m.get());
+
+    // result contains new state and output
+    return r;
 }
 
 

@@ -25,6 +25,14 @@ state_size symbol::index() const {
 }
 
 
+std::vector<symbol::ptr_t> symbol::subsymbols() const {
+    std::vector<symbol::ptr_t> result;
+    for (auto &t : value_type->subtypes()) {
+        // todo
+    }
+    return result;
+}
+
 memory::memory(state_space::ptr_t value_type, state_size b)
     :
     symbol(value_type) {

@@ -12,7 +12,9 @@ public:
     stream(symbol::ptr_t initial_state, symbol::ptr_t transition);
 
     void print_state() const;
+    void set_state(symbol::ptr_t new_state);
     void process(symbol::ptr_t input);
+    symbol::ptr_t output(symbol::ptr_t input);
     void test_input();
 
 private:
