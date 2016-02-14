@@ -89,10 +89,4 @@ void program::add_stream(const std::string &name, stream::ptr_t s) {
 }
 
 
-state_space::ptr_t type_mix(symbol *a, symbol *b) {
-    std::vector<state_space::ptr_t> types({a->type(), b->type()});
-    return std::make_shared<state_multiply>(types);
-}
-
-
 }

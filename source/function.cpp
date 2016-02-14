@@ -98,4 +98,32 @@ const symbol::ptr_t submemory::eval(const symbol *in) const {
 }
 
 
+std::vector<int> to_array(std::vector<int> base, state_size_t state) {
+    std::vector<int> result;
+    for (auto b : base) {
+        // todo
+    }
+    return result;
+}
+
+
+state_size_t to_state(std::vector<int> base, std::vector<int> state) {
+    state_size_t total = 0;
+    state_size_t offset = 1;
+    state_size_t index = 0;
+    for (auto b : base) {
+        total += offset * state.at(index++);
+        offset *= b;
+    }
+    return total;
+}
+
+
+state_space::ptr_t type_mix(symbol *a, symbol *b) {
+    std::vector<state_space::ptr_t> types({a->type(), b->type()});
+    return std::make_shared<state_multiply>(types);
+}
+
+
+
 }

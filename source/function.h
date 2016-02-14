@@ -66,6 +66,9 @@ private:
 };
 
 
+std::vector<int> to_array(std::vector<int> base, state_size_t state);
+state_size_t to_state(std::vector<int> base, std::vector<int> state);
+
 state_space::ptr_t type_mix(symbol *a, symbol *b);
 
 
