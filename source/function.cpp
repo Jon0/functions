@@ -1,4 +1,5 @@
 #include <cstring>
+#include <stack>
 
 #include "function.h"
 
@@ -100,8 +101,19 @@ const symbol::ptr_t submemory::eval(const symbol *in) const {
 
 std::vector<int> to_array(std::vector<int> base, state_size_t state) {
     std::vector<int> result;
+    std::stack<int> sums;
+    state_size_t offset = 1;
     for (auto b : base) {
-        // todo
+        sums.push(offset);
+        offset *= b;
+    }
+
+    std::stack<int> components;
+    while(!sums.empty()) {
+        auto div_val = state / sums.top();
+        auto mod_val = state % sums.top();
+        components.push(mod_val);
+        sums.pop();
     }
     return result;
 }
