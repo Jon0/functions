@@ -17,3 +17,7 @@ add_subdirectory(source)
 
 #build executable
 add_subdirectory(bin)
+
+
+#build tests
+add_subdirectory(tests)

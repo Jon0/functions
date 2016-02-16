@@ -100,7 +100,6 @@ const symbol::ptr_t submemory::eval(const symbol *in) const {
 
 
 std::vector<int> to_array(std::vector<int> base, state_size_t state) {
-    std::vector<int> result;
     std::stack<int> sums;
     state_size_t offset = 1;
     for (auto b : base) {
@@ -112,8 +111,15 @@ std::vector<int> to_array(std::vector<int> base, state_size_t state) {
     while(!sums.empty()) {
         auto div_val = state / sums.top();
         auto mod_val = state % sums.top();
-        components.push(mod_val);
+        state = mod_val;
+        components.push(div_val);
         sums.pop();
+    }
+
+    std::vector<int> result;
+    while(!components.empty()) {
+        result.push_back(components.top());
+        components.pop();
     }
     return result;
 }
