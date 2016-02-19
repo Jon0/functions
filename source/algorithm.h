@@ -9,7 +9,7 @@ class string {
 public:
     string();
 
-    int length();
+    int length() const;
 
 private:
     std::vector<int> type;
@@ -27,6 +27,8 @@ public:
 class graph {
 public:
     graph();
+
+    int size() const;
 
     void reduce();
 

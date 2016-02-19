@@ -8,7 +8,7 @@ string::string() {
 }
 
 
-int string::length() {
+int string::length() const {
     return value.size();
 }
 
@@ -20,6 +20,11 @@ node::node() {
 
 graph::graph() {
 
+}
+
+
+int graph::size() const {
+    return nodes.size();
 }
 
 
