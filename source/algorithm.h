@@ -9,6 +9,7 @@ class string {
 public:
     string();
 
+    int size() const;
     int length() const;
 
 private:
@@ -21,6 +22,12 @@ private:
 class node {
 public:
      node();
+
+     int eval(int input) const;
+
+ private:
+     std::vector<int> edge_map;
+
 };
 
 
@@ -32,8 +39,20 @@ public:
 
     void reduce();
 
+    int eval(int state, int input) const;
+
 private:
     std::vector<node> nodes;
+
+};
+
+
+class graph_state {
+public:
+    graph_state();
+
+private:
+    int state;
 
 };
 
